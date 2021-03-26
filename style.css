@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.form-main{
+    display: flex;
+    font-size: 2em;
+    justify-content: space-between;
+    width: 50%;
+}
+form{
+    font-size: 24px;
+}
+form input{
+    padding: 4px;
+    margin-top: 10px;
+}
+form .btn{
+    font-size: 20px;
+    padding: 10px 30px; 
+    cursor: pointer;
+}
