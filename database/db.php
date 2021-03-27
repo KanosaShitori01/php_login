@@ -56,6 +56,14 @@
         }
         return $data;
     }
+    function UpdateData($tablename, $id, $sqlstr){
+        $sql = "UPDATE $tablename SET $sqlstr WHERE id=$id";
+        return $GLOBALS['conn']->query($sql);
+    }
+    function DeleteData($tablename, $id){
+        $sql = "DELETE FROM $tablename WHERE id=$id";
+        return $GLOBALS['conn']->query($sql);
+    }
     function getData($tablename, $id){
         $sql = "SELECT * FROM $tablename WHERE id=$id";
         $dataU = $GLOBALS['conn']->query($sql);
@@ -69,6 +77,36 @@
         }
         return $data[0];
     }
-
+    function getAllData($tablename){
+        $sql = "SELECT * FROM $tablename";
+        $dataA = $GLOBALS['conn']->query($sql);
+        if(!$dataA){
+            return false;
+        }
+        if($dataA->num_rows > 0){
+            while($row = $dataA->fetch_assoc()){
+                $data[] = $row;
+            }
+        }
+        else
+            $data = "";
+        return $data;
+    }
+    function Decentralization($data){
+        switch($data){
+            case 1: {
+                return "user";
+                break;
+            }
+            case 2: {
+                return "admin";
+                break;
+            }
+            default: {
+                return "guest";
+                break;
+            }
+        }
+    }
     // $conn->query("TRUNCATE TABLE personnel");
 ?>

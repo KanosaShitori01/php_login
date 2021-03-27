@@ -1,6 +1,6 @@
 
 <?php
-        include 'db.php';
+        include '../database/db.php';
         $alertText = "";
         function Login($username, $password)
         {
@@ -19,8 +19,7 @@
             $alertText = Login($username, $password);
         }
         if (isset($_SESSION['login'])) {
-            header("location: index.php");
-            require_once('./index.php');
+            header("location: ../index.php");
         }
 
 ?>
@@ -33,7 +32,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>

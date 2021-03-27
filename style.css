@@ -3,6 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+a{
+    text-decoration: none;
+    color: black;
+   
+   
+}
 .form-main{
     display: flex;
     font-size: 2em;
@@ -10,14 +16,51 @@
     width: 50%;
 }
 form{
-    font-size: 24px;
+    font-size: 20px;
 }
-form input{
+form input[type=text], form input[type=password]{
     padding: 4px;
-    margin-top: 10px;
+    margin: 5px 0;
 }
 form .btn{
     font-size: 20px;
-    padding: 10px 30px; 
+    background: rgb(209, 209, 209) !important;;
+    outline: none;
+    border: none; 
+    padding: 10px 20px;
     cursor: pointer;
+}
+.nap_lan_dau{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    transform: translate(-50%,-50%);
+}
+.nap_lan_dau .inp{
+    padding: 1em;
+    width: 300px;
+}
+table{
+    margin: 0 auto;
+    margin-top: 2em;
+}
+table tr td, table tr th{
+    text-align: center;
+    padding: 10px;
+}
+.function_admin .btn{
+    color: rgb(47, 233, 47);
+    background: none !important;
+    font-size: 17px;
+    padding: 0;
+}
+.function_admin .btn:last-child{
+    color: red;
+}
+
+.small{
+    font-size: 15px !important;
+    padding: 5px !important;
 }
