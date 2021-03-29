@@ -26,7 +26,7 @@
 <body>
 <div class="container">
         <div class="side-navbar"> <!-- This is side navbar -->
-            <h1>User Manager</h1>
+            <a href="index.php"><h1>User Manager</h1></a>
             <div class="admin-name">
                 <span><i class="fas fa-user-tie"></i>
                 </span>
