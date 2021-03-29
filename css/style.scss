@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+:root
+{
+    --primary-color:#1e272e;
+    --second-color:#f7f1e3;
+    --another-color:#b33939;
+}
+body,html
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1.5px;
+
+}
+span
+{
+    font-size: 2em;
+    padding: 1rem;
+    color: var(--another-color);
+}
+p,a{
+    color: var(--second-color);
+    text-decoration: none;
+}
+// Index
+.container
+{
+  display:flex;
+    height:auto;
+    .content
+    {
+        height:auto;
+        width:100%;
+        padding: 2em;
+        .update
+        {
+            width:50%;
+            margin:0 auto;
+            text-align: center;
+            .Edit
+            {
+                width: 100%;
+                position: relative;
+                background-color: var(--primary-color);
+                padding:2em;
+                display:hide;
+                h1
+                {
+                    color: var(--second-color)
+                }
+                div
+                {
+                    margin-bottom:2em;
+                }
+                .code-input
+                {
+                 width: 100%;
+                position: relative;
+                width:100%;
+                input[type="text"]
+                {
+                width: 100%;
+                height:2em;
+                color: var(--primary-color);
+                outline: none;
+                border-radius: 40px;
+                padding: 10px;
+                }
+                }
+                .update-code
+                {
+                    input[type="submit"]
+                {
+                height:40px;
+                padding: 0 2em;
+                border-radius: 50px;
+                outline: none;
+                }
+                }
+            }
+            
+        }
+        table
+        {
+            thead{
+                background:var(--primary-color);
+            }
+            width:100%;
+            border-collapse: collapse;
+            border-width: 2px;
+            border-style: solid;
+            tr,th,td
+            {
+                border-width: 2px;
+                border-style: solid;
+                border-color:var(--another-color);
+                color: var(--second-color);
+                padding:1em;
+            }
+            td
+            {
+                color: var(--primary-color);
+                
+            }
+            .control
+            {
+                display: flex;
+                flex-flow: column;
+                a
+                {
+                    background-color: var(--another-color);
+                    padding: 10px 1em;
+                    margin-bottom: 2em;
+                }
+                a:first-child
+                {
+                    background-color: var(--another-color);
+                    padding: 10px 1em;
+                }
+                a:nth-child(2)
+                {
+                    background-color: var(--primary-color);
+                    padding: 10px 1em;
+                }
+            }
+           
+        }
+    }
+    .side-navbar
+    {
+        display: flex;
+        flex-flow: column;
+        position: sticky;
+        background-color: var(--primary-color);
+        top: 0;
+        left: 0;
+        bottom:0;
+        min-height: 100%;
+        padding: 1em;
+        h1
+        {
+            color: var(--second-color);
+        }
+        .admin-name
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding:2em;
+        }
+        .list-item
+        {
+            display: flex;
+            flex-direction:column;
+            justify-content: center;
+            padding:1rem;
+            div 
+            {
+                margin: 2em;
+                justify-content: center;
+                align-items: center;
+                display:flex;
+                cursor: pointer;
+            }
+        }
+    }
+}
+// Login Form
+.login-container
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+    .form-control{
+        text-transform: uppercase;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2em;
+        font-size: 2em;
+        width: 100%;
+        height:100%;
+        background: var(--primary-color);
+        form
+        {
+            width:100%;
+            text-align: center;
+            input[type="text"],input[type="password"],input[type="submit"]
+        {
+            height:3em;
+            width: 250px;
+            padding: 0 1rem;
+            border-radius: 50px;
+            border: 2px solid white;
+            cursor: pointer;
+            outline:none;
+        }
+
+        }
+    }
+}
+//sign form
+.sign-container
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    .form-control{
+        text-transform: uppercase;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2em;
+        font-size: 1em;
+        width: 100%;
+        height:100%;
+        background: var(--primary-color);
+        form
+        {
+            width:100%;
+            text-align: center;
+            input[type="text"],input[type="password"],input[type="submit"]
+        {
+            height:3em;
+            width: 250px;
+            padding: 0 1rem;
+            border-radius: 50px;
+            border: 2px solid white;
+            cursor: pointer;
+            outline:none;
+        }
+
+        }
+    }
+}

@@ -1,52 +1,61 @@
+<!-- On her use php session when the user not login yet back to login page -->
+<!-- This is main page for admin manager -->
+
 <?php
-        include './database/db.php';
-        if(CheckSession()) $DataUser = getData("personnel", $_SESSION['login']);
-        if(isset($_POST['log_in'])){
-            header("location: Log/login.php");
-            if(isset($_SESSION['login'])) { 
-                header("location: index.php");
-                EndSession();
-            }
+        include 'database/db.php';
+        if(CheckSession())
+        {
+            $DataUser2 = getData("personnel", $_SESSION['login']);
         }
-        
-?>
-<!-- ========================================================================================================= -->
+        if(!isset($_SESSION['login'])) { 
+            header("location: login.php");
+        }
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/76ee6cfa25.js" crossorigin="anonymous"></script>
+    <script src="js.js"></script>
+
+    <title>Admin Manager Page</title>
 </head>
 <body>
-    <h1>Main Page <?php echo CheckSession() ? "Of ".$DataUser['tentaikhoan']: ""; ?></h1>
-    <h1>Welcome <?php echo CheckSession() ? $DataUser['tentaikhoan'] : "";?></h1>
-    <?php 
-        if(CheckSession()){
-            $position = Decentralization($DataUser['trangthai']);
-        }
-        echo (isset($_SESSION['login'])) ? "<h1>Membership Code: {$DataUser['manhanvien']}</h1>" : "";
-        echo (isset($_SESSION['login'])) ? "<h1>Position: {$position}</h1>" : "";
-    ?>
-    <form class="form-main" action="index.php" method="post">
-        <div class="log-reg">
-            <input class="btn" type="submit" name="log_in" value="<?php  
-            echo (isset($_SESSION['login'])) ? "Logout" : "Login"; ?>">
-            <?php 
-            echo (CheckSession()) ? "" : '<a class="btn" href="./log/register.php">Register</a>';
-            echo (CheckSession() && $DataUser['trangthai'] == 2) ? '<a class="btn" href="./admin/admin.php">Admin</a>' : "";    
+<div class="container">
+        <div class="side-navbar"> <!-- This is side navbar -->
+            <h1>User Manager</h1>
+            <div class="admin-name">
+                <span><i class="fas fa-user-tie"></i>
+                </span>
+                <p>
+                <?php echo CheckSession() ? $DataUser2['tentaikhoan'] : "";?>
+                </p>   <!--Print Session The user Logged  -->
+            </div>
+            <div class="list-item">
+            <?php echo (CheckSession() && $DataUser2['trangthai'] == 2) ? 
+            '<div class="manager">
+                <span><i class="fas fa-users-cog"></i>
+                </span>
+                <form action="index.php" method="post">
+                <a class="btn" href="manager.php">Manager</a>
+                </form>
+            </div>' : "";
             ?>
-        </div>
-        <div class="uplevel">
-            <?php echo (CheckSession() && $DataUser['trangthai'] == 1) ? '<a class="btn" href="./admin/update.php">Update</a>' : ""; ?>
-        </div>
-    </form>
+            <div class="logout">
+                <span><i class="fas fa-sign-out-alt"></i>
+                </span>
+                <a href="logout.php" ">Logout</a>
+            </div> <!-- Use Function logout is this <a> -->
+            </div>
+        </div><!-- End Of Side Nav -->
+<div class="content">
+    <div class="first-content" id="first-content">
+        <h1>hi admin</h1>
+    </div>
+</div>
+</div>
 </body>
-<script>
- if ( window.history.replaceState ) {
-    window.history.replaceState( null, null, window.location.href );
-    } 
-</script>
 </html>
