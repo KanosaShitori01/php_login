@@ -28,7 +28,8 @@
     <div class="log_reg">
         <?php echo CheckSession() ? '<a href="./components/logIn/logout.php">Logout</a>' : '<a href="./components/logIn/login.php">Login</a>';
               echo CheckSession() ? '' : ' <a href="./components/logIn/register.php">Register</a>';
-              echo (CheckSession() && $DataUser['trangthai'] == "2") ? ' <a href="./components/admin/">Admin</a>' : "";
+              echo (CheckSession() && $DataUser['trangthai'] == "2") ? ' <a href="./components/admin/">Admin</a>' : '';
+              echo (CheckSession() && $DataUser['trangthai'] == "1") ? ' <a href="./components/user/">Edit</a>' : "";
         ?>
     </div>
 </body>

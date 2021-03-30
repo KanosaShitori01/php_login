@@ -1,12 +1,22 @@
 <?php
     include '../../db/Infor_control.php';
-    if(!CheckSession()) header("location: ../../index.php");
     $AllData = getAllData("personnel");
+    $id = NULL;
     if(isset($_GET['delete'])){
         $id = $_GET['delete'];
         Admin_Delete($id);
         header("Refresh: 0; url=index.php");
     }
+    if(!CheckSession()) 
+    {   
+        header("location: ../../index.php");
+    }
+    else {
+        $statusUser = getData("personnel", $_SESSION['login'])[0]['trangthai'];
+        if(!ConfirmStatus($statusUser))
+        header("location: ../../index.php");
+    }
+    // var_dump(CheckStatusUser($GLOBALS['id']));
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -11,8 +11,7 @@
     // Phần xử lý đăng nhập - dăng ký :
     $alerttext = "";
     // 1. Hàm bắt lỗi đăng nhập
-    function AlertText($bool, $str){ // biến bool : kiểm tra xem mk hoặc tk có đúng không? 
-                                     // biến str : xác định tk hoặc mk thông qua từ khóa user và pass
+    function AlertText($bool, $str){ 
         // Kiểm tra dạng nhập và lỗi 
         if(!$bool && $str == "pass")
             return "Mật khẩu không chính xác";
@@ -23,9 +22,7 @@
     // (*) : Các phần giá trị nhập vào sẽ được lấy từ $_POST
     // 2. Hàm xử lý đăng nhập
     function Login($username, $password){
-        // xác định tên bảng
         $tablename = "Personnel";
-        // chuyển đổi mật khẩu thành MD5
         $Mpassword = md5($password);
         $checkUsername = SearchSingleData($tablename, "tentaikhoan", "\"$username\"");
         $checkPassword = SearchSingleData($tablename, "matkhau", "\"$Mpassword\"");
@@ -47,10 +44,7 @@
         return isset($_SESSION['login']);
     }
     // 3. Hàm xử lý giá trị đăng ký
-    function CheckRegister($form, $value){ // form : xác nhận dạng cần kiểm tra (tên tài khoản và mã nhân viên)
-                                           // value : giá trị cần kiểm tra 
-                                        // => Đều dẫn tới mục đích duy nhất là nó không được trùng với các tài khoản khác 
-        // Đoạn này để cấm người ghi tên người dùng bắt đầu bằng chữ số 
+    function CheckRegister($form, $value){ 
         if($form == "tentaikhoan") { 
             $Nvalue = trim($value);
             if(intval($Nvalue[0])) // sử dụng hàm intval - chuyển đổi string -> int dể xác nhận
@@ -63,8 +57,6 @@
            // Để tránh trường hợp lỗi foreach, ta chỉ cho nó thực hiện khi bảng không rỗng dữ liệu 
         if(!empty($AllData) && !empty($value)){
             foreach($AllData as $data){  // Chạy vòng lặp foreach để kiểm tra 
-                // Nếu có mã nhân viên nào bằng với giá trị nhập vào thì ta trả về false
-                // và kết thúc hàm ngay lập tức
                 if($data[$form] === $value){
                 return false; 
                 break; }
@@ -74,7 +66,7 @@
         return true;
     }
     // Cấu trúc hàm CheckRegister : CheckRegister("tentaikhoan/manhanvien", "giatrinhapvao");
-
+ 
     // 4. Hàm xử lý đăng ký
     function Register($inforArr){ // inforArr : ta sẽ gửi các giá trị nhập vào của người dùng vào hàm SQL ở dạng chuỗi
         // sau đó chuyển mảng thành dạng string
@@ -126,4 +118,28 @@
         }
     }
 
+    function ConfirmStatus($status)
+    {
+        return ($status == "2") ? true : false;
+    }
+
+
+    // function CheckUsername($username){
+    //     $sqlCheck = "SELECT tentaikhoan FROM personnel WHERE tentaikhoan = $username";
+    //     $check = Execute($sqlCheck);
+    //     return $check;
+    // }
+    // function CheckUsername_P($username){
+    //     $sql = "SELECT tentaikhoan FROM personnel";
+    //     $column = ConvertData(Execute($sql));
+    //     // var_dump($column);
+    //     foreach($column as $col){
+    //         if($username === $col['tentaikhoan']){
+    //             return false;
+    //             break;
+    //         }
+    //     }
+    //     return true;
+    // }
+    // var_dump(CheckUsername_P("nguyenthanhphu1"));
 ?>
