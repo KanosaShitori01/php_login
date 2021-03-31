@@ -16,11 +16,12 @@
         <?php 
             (CheckSession()) ? $positionU = Decentralization($DataUser['trangthai']) : "";
             if($DataUser !== ""){
+                $dateVN = DateMadeInVN($DataUser['ngaytao']);   
                 echo "<ul>
                     <li>Mã tài khoản: {$DataUser['manhanvien']}</li>
                     <li>Tên tài khoản: {$DataUser['tentaikhoan']}</li>
                     <li>Cấp quyền: {$positionU}</li>
-                    <li>Ngày tạo tài khoản: {$DataUser['ngaytao']}</li>
+                    <li>Ngày tạo tài khoản: {$dateVN}</li>
                 </ul>";
             } else echo "";
         ?>
@@ -29,7 +30,7 @@
         <?php echo CheckSession() ? '<a href="./components/logIn/logout.php">Logout</a>' : '<a href="./components/logIn/login.php">Login</a>';
               echo CheckSession() ? '' : ' <a href="./components/logIn/register.php">Register</a>';
               echo (CheckSession() && $DataUser['trangthai'] == "2") ? ' <a href="./components/admin/">Admin</a>' : '';
-              echo (CheckSession() && $DataUser['trangthai'] == "1") ? ' <a href="./components/user/">Edit</a>' : "";
+              echo (CheckSession() && ($DataUser['trangthai'] == "1" || $DataUser['trangthai'] == "2")) ? ' <a href="./components/user/">Edit</a>' : "";
         ?>
     </div>
 </body>

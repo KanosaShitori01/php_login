@@ -1,5 +1,6 @@
 <?php
     include '../../db/Infor_control.php';
+    $date = date("Y-m-d");
     if(isset($_POST['register_submit'])){
         if(CheckRegister("tentaikhoan", $_POST['username']) 
         && CheckRegister("manhanvien", $_POST['membership_code']) &&
@@ -8,9 +9,9 @@
             $username = $_POST['username'];
             $memberCode = $_POST['membership_code'];
             $password = md5($_POST['password']);
-            $date = date("Y-m-d");
+            $dateVN = date('Y-m-d', strtotime($date));
             Register(["manhanvien" => "\"$memberCode\"", "tentaikhoan" => "\"$username\"", 
-            "matkhau" => "\"$password\"", "ngaytao" => "\"$date\"", "trangthai" => 1]);
+            "matkhau" => "\"$password\"", "ngaytao" => "\"$dateVN\"", "trangthai" => 1]);
             header("location: ./login.php");
         }
         else $alerttext = "Vui lòng kiểm tra lại";

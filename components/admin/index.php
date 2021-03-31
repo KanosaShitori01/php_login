@@ -1,7 +1,6 @@
 <?php
     include '../../db/Infor_control.php';
     $AllData = getAllData("personnel");
-    $id = NULL;
     if(isset($_GET['delete'])){
         $id = $_GET['delete'];
         Admin_Delete($id);
@@ -9,7 +8,7 @@
     }
     if(!CheckSession()) 
     {   
-        header("location: ../../index.php");
+        header("location: ../../");
     }
     else {
         $statusUser = getData("personnel", $_SESSION['login'])[0]['trangthai'];
@@ -34,7 +33,7 @@
 <body>
     <table border="1" cellspacing="0">
         <tr>
-            <td colspan="4"><a href="../../index.php">Go Back</a></td>
+            <td colspan="4"><a href="../../">Go Back</a></td>
             <td colspan="2"><a href="./add.php">Thêm User</a></td>
         </tr>
         <tr>
@@ -49,12 +48,13 @@
                 if(!empty($AllData)){
                     $stt = 1;
                     foreach($AllData as $data){
+                        $dateVN = DateMadeInVN($data['ngaytao']);
                         if($data['trangthai'] != "2"){
                         echo "<tr>";
                         echo "<td>{$stt}</td>";
                         echo "<td>{$data['manhanvien']}</td>";
                         echo "<td>{$data['tentaikhoan']}</td>";
-                        echo "<td>{$data['ngaytao']}</td>";
+                        echo "<td>{$dateVN}</td>";
                         echo "<td>{$data['trangthai']}</td>";
                         echo "<td>
                             <a href='./edit.php?id={$data['id']}'>Edit</a>

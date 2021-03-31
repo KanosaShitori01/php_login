@@ -1,6 +1,9 @@
 <?php
     include '../../db/Infor_control.php';
-    if(!CheckSession()) header("location: ../../index.php");
+    if(!CheckSession()) 
+    {   
+        header("location: ../../");
+    }
     if(isset($_POST['add_submit'])){
         if(CheckRegister("tentaikhoan", $_POST['username']) 
         && CheckRegister("manhanvien", $_POST['membership_code']) &&

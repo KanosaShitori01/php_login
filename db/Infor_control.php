@@ -122,8 +122,10 @@
     {
         return ($status == "2") ? true : false;
     }
-
-
+    function DateMadeInVN($date){
+        $dateVN = date_create($date);
+        return date_format($dateVN, "d-m-Y");
+    }
     // function CheckUsername($username){
     //     $sqlCheck = "SELECT tentaikhoan FROM personnel WHERE tentaikhoan = $username";
     //     $check = Execute($sqlCheck);

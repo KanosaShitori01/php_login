@@ -3,7 +3,7 @@
     if(CheckSession()) 
     $DataUser = getData("personnel", $_SESSION['login'])[0];
     else 
-    header("location: ../../index.php");
+    header("location: ../../");
 
     if(isset($_POST['change_submit'])){
         $username = $_POST['username']; 

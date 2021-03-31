@@ -5,12 +5,12 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
         if(Login($username, $password) === true){
-            header("location: ../../index.php");
+            header("location: ../../");
         }
         else $alerttext = Login($username, $password);
     }
     if(CheckSession()){
-        header("location: ../../index.php");
+        header("location: ../../");
     }
 ?>
 <!DOCTYPE html>

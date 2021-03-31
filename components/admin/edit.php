@@ -1,6 +1,6 @@
 <?php
     include '../../db/Infor_control.php';
-    if(!CheckSession()) header("location: ../../index.php");
+    if(!CheckSession()) header("location: ../../");
 
     if(isset($_GET['id'])){
         $id = $_GET['id'];
